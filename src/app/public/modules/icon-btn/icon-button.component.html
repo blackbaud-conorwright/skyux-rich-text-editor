@@ -1,0 +1,9 @@
+<button
+    class="sky-btn"
+    [ngClass]="{
+        'sky-btn-primary': isPrimary,
+        'sky-btn-secondary': !isPrimary
+    }"
+>
+    <sky-icon [icon]="icon"></sky-icon>
+</button>

@@ -1,0 +1,207 @@
+ <div>
+  <div class="toolbar">
+    <select
+      class="select-field"
+      [ngModel]="tag"
+      (ngModelChange)="changeTag($event)"
+    >
+      <option
+        value="h1"
+      >
+        <h1>Title 1</h1>
+      </option>
+      <option
+        value="h2"
+      >
+        <h2>Title 2</h2>
+      </option>
+      <option
+        value="h3"
+      >
+        <h3>Title 3</h3>
+      </option>
+      <option
+        value="h4"
+      >
+        <h4>Title 4</h4>
+      </option>
+      <option
+        value="h5"
+      >
+        <h5>Title 5</h5>
+      </option>
+      <option
+        value="h6"
+      >
+        <h6>Subtitle</h6>
+      </option>
+      <option
+        value="p"
+        selected
+      >
+        <p>Paragraph</p>
+      </option>
+      <option
+        value="pre"
+      >
+        <p>Preformatted</p>
+      </option>
+    </select>
+    <div class="breaker"></div>
+    <div class="breaker"></div>
+
+    <select
+      class="select-field"
+      [ngModel]="font"
+      (ngModelChange)="execCommand('fontname', $event)"
+    >
+      <option *ngFor="let fontModel of fontList"
+        [value]="fontModel.value"
+      >
+       {{ fontModel.name }}
+      </option>
+    </select>
+    <div class="breaker"></div>
+    <div class="breaker"></div>
+
+    <select
+      class="select-field"
+      [(ngModel)]="fontSize"
+      (ngModelChange)="changeFontSize()"
+    >
+      <option *ngFor="let size of fontSizeList"
+        [value]="size"
+      >
+       {{ size }}
+      </option>
+    </select>
+    <div class="breaker"></div>
+    <div class="breaker"></div>
+
+    <sky-colorpicker
+      title="Font color"
+      [showResetButton]="false"
+      (selectedColorChanged)="changeColor($event)"
+      #colorPicker
+    >
+      <input
+        type="text"
+        outputFormat="hex"
+        [ngModel]="fontColor"
+        [skyColorpickerInput]="colorPicker"
+      />
+    </sky-colorpicker>
+
+    <sky-colorpicker
+      title="Background color"
+      [showResetButton]="false"
+      (selectedColorChanged)="changeColor($event, true)"
+      #backColorPicker
+    >
+      <input
+        type="text"
+        outputFormat="hex"
+        [ngModel]="backColor"
+        [skyColorpickerInput]="backColorPicker"
+      />
+    </sky-colorpicker>
+
+    <sky-icon-button
+      icon="list-ul"
+      (click)="execCommand('insertUnorderedList')"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="list-ol"
+      (click)="execCommand('insertOrderedList')"
+    >
+    </sky-icon-button>
+
+    <sky-icon-button
+      icon="underline"
+      [isPrimary]="underlineState"
+      (click)="execCommand('underline');"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="italic"
+      [isPrimary]="italicState"
+      (click)="execCommand('italic');"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="bold"
+      [isPrimary]="boldState"
+      (click)="execCommand('bold');"
+    >
+    </sky-icon-button>
+
+    <sky-icon-button
+      icon="align-left"
+      (click)="execCommand('justifyLeft')"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="align-center"
+      (click)="execCommand('justifyCenter')"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="align-right"
+      (click)="execCommand('justifyRight')"
+    >
+    </sky-icon-button>
+
+    <sky-icon-button
+      icon="outdent"
+      (click)="execCommand('outdent')"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="indent"
+      (click)="execCommand('indent')"
+    >
+    </sky-icon-button>
+
+    <sky-icon-button
+      icon="undo"
+      (click)="execCommand('undo')"
+    >
+    </sky-icon-button>
+    <sky-icon-button
+      icon="repeat"
+      (click)="execCommand('redo')"
+    >
+    </sky-icon-button>
+
+    <sky-icon-button
+      icon="link"
+      (click)="link()"
+    >
+    </sky-icon-button>
+
+    <sky-dropdown *ngIf="mergeFields && mergeFields.length > 0">
+      <sky-dropdown-button>
+        Insert merge field
+      </sky-dropdown-button>
+      <sky-dropdown-menu>
+        <sky-dropdown-item *ngFor="let mergeField of mergeFields">
+          <button
+            type="button"
+            (click)="insertMergeField(mergeField)"
+          >
+            {{ mergeField.name }}
+          </button>
+        </sky-dropdown-item>
+      </sky-dropdown-menu>
+    </sky-dropdown>
+  </div>
+  <div class="editor-wrapper" (click)="updateValues()">
+    <div
+      class="editor"
+      contenteditable
+      (paste)="pasteOverride($event)"
+    >
+    </div>
+  </div>
+</div>

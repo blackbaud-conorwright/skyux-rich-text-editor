@@ -1,0 +1,52 @@
+<sky-modal>
+    <sky-modal-header>
+        Create link
+    </sky-modal-header>
+    <sky-modal-content>
+        <fieldset
+            class="sky-form-group"
+        >
+            <legend
+                class="sky-control-label sky-control-label-required"
+            >
+                Insert a Url: 
+            </legend>
+            <input
+                class="sky-form-control"
+                type="text"
+                [(ngModel)]="url"
+            />
+        </fieldset>
+        <fieldset
+            class="sky-form-group"
+        >
+            <legend
+                class="sky-control-label"
+            >
+                Where should it open?
+            </legend>
+            <select
+                class="sky-form-control"
+                [(ngModel)]="target"
+            >
+                <option value="0">Current window</option>
+                <option value="1">New window</option>
+            </select>
+        </fieldset>
+    </sky-modal-content>
+    <sky-modal-footer>
+        <button
+            class="sky-btn sky-btn-link"
+            (click)="cancel()"
+        >
+            Cancel
+        </button>
+        <button
+            class="sky-btn sky-btn-primary"
+            [disabled]="!valid"
+            (click)="save()"
+        >
+            Save
+        </button>
+    </sky-modal-footer>
+</sky-modal>

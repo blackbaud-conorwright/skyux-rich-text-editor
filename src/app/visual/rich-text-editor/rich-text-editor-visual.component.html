@@ -1,0 +1,33 @@
+<div
+  class="app-screenshot"
+>
+  <h1>Rich Text Editor</h1>
+  <form>
+    <rich-text-editor
+      name="rich-text-editor"
+      [mergeFields]="mergeFields"
+      [(ngModel)]="value"
+    >
+    </rich-text-editor>
+    <h2>
+      Preview html
+    </h2>
+    <div *ngIf="value"
+      class="editor-wrapper"
+    >
+      <section
+        class="content-display"
+      >
+        {{ value }}
+      </section>
+    </div>
+    <h2>
+      Preview render
+    </h2>
+    <div
+      class="content-display"
+      [innerHTML]="value"
+    >
+    </div>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+.editor-wrapper {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     background-color: white;
+}
+
+
+.editor {
+    width: 70vw;
+    height: 50vh;
+    margin: 2rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    box-shadow: 0 .1rem .4rem black;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+
+.toolbar {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(20px,40px));
+    background-color: rgb(231, 231, 231);
+    grid-gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items:center;
+    .select-field {
+        width: 150px;
+        margin-right: 100px;
+    }
+}
+
+.sky-btn-secondary {
+    background-color: white;
+}
